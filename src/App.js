@@ -18,6 +18,12 @@ function App() {
   let [disable, setDisable] = useState(false);
 
   console.log(cardSrc);
+
+  // automatically start game
+  useEffect(() => {
+    shuffleCard();
+  }, []);
+
   // validate the two choice state and increase Turn
   useEffect(() => {
     if (chooseOne && chooseTwo) {
@@ -35,7 +41,6 @@ function App() {
             }
           });
         });
-        setTurn((previousTurn) => previousTurn + 1);
       } else {
         console.log("compare false");
         setTimeout(() => {
@@ -56,10 +61,13 @@ function App() {
     setChooseOne(null);
     setChooseTwo(null);
     setDisable(false);
+    setTurn((previousTurn) => previousTurn + 1);
   };
 
   // shuffle cards
   const shuffleCard = () => {
+    setChooseOne(null);
+    setChooseTwo(null);
     let shuffledCard = [...card, ...card];
     shuffledCard.sort(() => {
       return Math.random() - 0.5;
@@ -95,6 +103,7 @@ function App() {
           );
         })}
       </div>
+      <p>Turns : {turn}</p>
     </div>
   );
 }
