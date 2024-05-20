@@ -15,14 +15,17 @@ function App() {
   let [turn, setTurn] = useState(0);
   let [chooseOne, setChooseOne] = useState(null);
   let [chooseTwo, setChooseTwo] = useState(null);
+  let [disable, setDisable] = useState(false);
 
   console.log(cardSrc);
   // validate the two choice state and increase Turn
   useEffect(() => {
     if (chooseOne && chooseTwo) {
+      setDisable(true);
       if (chooseOne.src === chooseTwo.src) {
         console.log("compare true");
         resetChoice();
+        // set the matched card property to true instead of false
         setCardSrc((previous) => {
           return previous.map((card) => {
             if (chooseOne.src === card.src) {
@@ -52,6 +55,7 @@ function App() {
   const resetChoice = () => {
     setChooseOne(null);
     setChooseTwo(null);
+    setDisable(false);
   };
 
   // shuffle cards
@@ -82,6 +86,7 @@ function App() {
         {cardSrc.map((card) => {
           return (
             <SingleCard
+              disable={disable}
               fliped={chooseOne === card || chooseTwo === card || card.matched}
               chooseCard={chooseCard}
               key={card.id}

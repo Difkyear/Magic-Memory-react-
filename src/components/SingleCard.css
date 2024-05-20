@@ -10,10 +10,24 @@
 /* check whether should show font or not */
 .card .font {
   position: absolute;
+  transition: all ease-in 0.2s;
   transform: rotateY(90deg);
 }
 
 .fliped .font {
   /* position: absolute; */
   transform: rotateY(0deg);
+  /* transition: all ease-in 0.2s; */
+  transition-delay: 0.2s;
+}
+.card .back {
+  /* transform: rotateY(0deg); */
+  transition: all ease-in 0.2s;
+  transition-delay: 0.2s;
+}
+
+.fliped .back {
+  transition: all ease-in 0.2s;
+  transform: rotateY(90deg);
+  /* transition-delay: 0.2s; */
 }

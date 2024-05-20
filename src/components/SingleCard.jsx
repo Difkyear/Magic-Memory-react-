@@ -1,9 +1,9 @@
 import React from "react";
 import "./SingleCard.css";
 export default function SingleCard(props) {
-  let { card, chooseCard, fliped } = props;
+  let { card, chooseCard, fliped, disable } = props;
   const choose = () => {
-    chooseCard(card);
+    !disable && chooseCard(card);
   };
   return (
     <div>
