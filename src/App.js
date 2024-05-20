@@ -35,7 +35,9 @@ function App() {
         setTurn((previousTurn) => previousTurn + 1);
       } else {
         console.log("compare false");
-        resetChoice();
+        setTimeout(() => {
+          resetChoice();
+        }, 1000);
       }
     }
   }, [chooseOne, chooseTwo]);
@@ -79,7 +81,12 @@ function App() {
       <div className="card-grid">
         {cardSrc.map((card) => {
           return (
-            <SingleCard chooseCard={chooseCard} key={card.id} card={card} />
+            <SingleCard
+              fliped={chooseOne === card || chooseTwo === card || card.matched}
+              chooseCard={chooseCard}
+              key={card.id}
+              card={card}
+            />
           );
         })}
       </div>

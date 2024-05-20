@@ -1,7 +1,19 @@
 .card {
   width: 100%;
+  /* position: relative; */
 }
 .card img {
   border: 2px solid white;
   border-radius: 5%;
+}
+
+/* check whether should show font or not */
+.card .font {
+  position: absolute;
+  transform: rotateY(90deg);
+}
+
+.fliped .font {
+  /* position: absolute; */
+  transform: rotateY(0deg);
 }
